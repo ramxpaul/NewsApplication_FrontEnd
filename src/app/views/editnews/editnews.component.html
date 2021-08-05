@@ -1,0 +1,31 @@
+<div class="container mt-5">
+    <form #myForm='ngForm' (ngSubmit)='updatenews(myForm.value)'>
+      <div class="mb-3">
+        <label for="title" class="form-label">The Title</label>
+        <input
+          type="text"
+          class="form-control"
+          id="title"
+          placeholder="Enter Your News Title"
+          name="title"
+          [(ngModel)]='news.title'
+        />
+        <div class="errors mt-2" *ngIf='errVal'> * Title Is Required *</div>
+      </div>
+      <div class="mb-3 mt-4">
+        <label for="description" class="form-label">Description</label>
+        <textarea
+          type="text"
+          class="form-control myStyle"
+          id="description"
+          placeholder="Description"
+          name="description"
+          rows="4"
+          [(ngModel)]='news.description'
+        ></textarea>    
+        <div class="errors mt-2" *ngIf='errVal'> * Description Is Required *</div> 
+      </div>
+      <button type="submit" class="btn btn-dark mt-4">Update</button>
+    </form>
+  </div>
+  

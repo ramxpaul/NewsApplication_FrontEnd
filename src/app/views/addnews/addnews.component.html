@@ -1,0 +1,52 @@
+<div class="container mt-5">
+  <form #myForm='ngForm' (ngSubmit)='addnews(myForm.value)'>
+    <div class="mb-3">
+      <label for="title" class="form-label">The Title</label>
+      <input
+        type="text"
+        class="form-control"
+        id="title"
+        placeholder="Enter Your News Title"
+        name="title"
+        ngModel
+        #title="ngModel"
+        required
+        minlength="8"
+      />
+      <div class="errors" *ngIf="title.invalid && title.touched">
+        <div *ngIf="title.errors?.required"> * Title Is Required *</div>
+        <div *ngIf="title.errors?.minlength"> * Title Minimum Length At Least {{title.errors?.minlength.requiredLength}} Letters</div>
+      </div>
+    </div>
+    <!--  -->
+    <div class="mb-3">
+    <label for="image" class="form-label">Choose Your Image</label>
+    <input
+      type="file"
+      class="form-control"
+      id="image"
+      placeholder="Enter Your News Title"
+      name="image"
+    />
+  </div>
+
+    <div class="mb-3 mt-4">
+      <label for="description" class="form-label">Description</label>
+      <textarea
+        type="text"
+        class="form-control myStyle"
+        id="description"
+        placeholder="Description"
+        name="description"
+        ngModel
+        #description="ngModel"
+        required
+        rows="4"
+      ></textarea>
+      <div class="errors" *ngIf="description.invalid && description.touched">
+        <div *ngIf="description.errors?.required"> * Description Is Required *</div>
+      </div>      
+    </div>
+    <button type="submit" class="btn btn-dark mt-4" [disabled]='myForm.invalid'>Submit</button>
+  </form>
+</div>
